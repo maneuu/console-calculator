@@ -54,7 +54,7 @@ Ao executar o script, você verá algo assim no terminal:
    *
    /
    ^
-   √
+   **
 ========================================
 
 ✨ Escolha uma operação: +
@@ -62,7 +62,7 @@ Ao executar o script, você verá algo assim no terminal:
 
 📐 Resultado: 5 + 3 = 8
 ========================================
-🔄 Deseja continuar com 8? (Digite 'y' para sim, 'n' para nova operação):
+🔄 Deseja continuar com 8? (Digite 's' para sim, 'n' para nova operação):
 ```
 
 ## Estrutura do código

@@ -17,8 +17,6 @@ def multiply(n1, n2):
     return n1 * n2
 
 def divide(n1, n2):
-    if n2 == 0:
-        return "Erro: Divisão por zero não é permitida."
     return n1 / n2
 
 # Operação de potenciação
@@ -27,8 +25,6 @@ def power(n1, n2):
 
 # Operação de raiz quadrada
 def square_root(n1):
-    if n1 < 0:
-        return "Erro: Não é possível calcular a raiz quadrada de um número negativo."
     return math.sqrt(n1)
 
 # Dicionário com as operações
@@ -63,20 +59,32 @@ def calculator():
             print("❌ Por favor, escolha uma operação válida.")
         
         if operation_symbol == "**":
+            if num1 < 0:
+                print('Erro: Não é possível calcular a raiz quadrada de um número negativo.')
+                while True:
+                    num1 = float(input("\n🔢 Digite um número maior ou igual a 0: "))
+                    if num1 >= 0:
+                        break
             answer = operations[operation_symbol](num1)
             print(f"\n📐 Resultado: √{num1} = {answer}")
         else:
             num2 = float(input("\n🔢 Qual o próximo número?: "))
+            if operation_symbol == "/" and num2 == 0:
+                print("\n❌ Erro: Divisão por zero não é permitida.")
+                while True:
+                    num2 = float(input("\n🔢 Digite um número diferente de 0: "))
+                    if num2 != 0:
+                        break
             calculation_function = operations[operation_symbol]
             answer = calculation_function(num1, num2)
             print(f"\n📐 Resultado: {num1} {operation_symbol} {num2} = {answer}")
         
         print("=" * 40)
         while True:
-            repeat = input(f"🔄 Deseja continuar com {answer}? (Digite 'y' para sim, 'n' para nova operação): ").lower()
-            if repeat in ['y', 'n']:
+            repeat = input(f"🔄 Deseja continuar com {answer}? (Digite 's' para sim, 'n' para nova operação): ").lower()
+            if repeat in ['s', 'n']:
                 break
-            print("❌ Resposta inválida. Por favor, digite 'y' ou 'n'.")
+            print("❌ Resposta inválida. Por favor, digite 's' ou 'n'.")
         
         if repeat == "n":
             clear_terminal()
